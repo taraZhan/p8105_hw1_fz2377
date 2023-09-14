@@ -2,7 +2,7 @@
 title: "p8105_hw1_fz2377"
 author: "Tara Zhan"
 date: "Sep. 14th, 2023"
-output: html_document
+output: github_document
 ---
 
 # Problem 1
