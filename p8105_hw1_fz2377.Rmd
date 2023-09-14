@@ -1,0 +1,21 @@
+---
+title: "p8105_hw1_fz2377"
+author: "Tara Zhan"
+date: "Sep. 14th, 2023"
+output: github_document
+---
+
+I'm an R Markdown document!
+
+# Section 1
+
+Here's a **code chunk** that samples from a *normal distribution*:
+
+```{r}
+samp = rnorm(100)
+length(samp)
+```
+
+# Section 2
+
+I can take the mean of the sample, too! The mean is `r mean(samp)`.
