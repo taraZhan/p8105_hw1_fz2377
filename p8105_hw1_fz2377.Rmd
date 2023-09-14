@@ -2,12 +2,10 @@
 title: "p8105_hw1_fz2377"
 author: "Tara Zhan"
 date: "Sep. 14th, 2023"
-output: github_document
+output: html_document
 ---
 
-I'm an R Markdown document!
-
-# Section 1
+# Problem 1
 
 Here's a **code chunk** that samples from a *normal distribution*:
 
