@@ -7,13 +7,64 @@ output: github_document
 
 # Problem 1
 
-Here's a **code chunk** that samples from a *normal distribution*:
+Here's a short description of the dataset via R codes:
 
-```{r}
-samp = rnorm(100)
-length(samp)
+```{r, echo=FALSE, message=FALSE}
+options(repos=c(CRAN="THE URL OF YOUR FAVORITE MIRROR"))
+local({r <- getOption("repos")
+       r["CRAN"] <- "http://cran.r-project.org"
+       options(repos=r)})
+install.packages("moderndive")
+library(tidyverse)
+library(moderndive)
+data("early_january_weather")
 ```
 
-# Section 2
+This "early_january_weather" dataset contains 15 variables: `r colnames(early_january_weather)`.
 
-I can take the mean of the sample, too! The mean is `r mean(samp)`.
+This dataset has a total of `r nrow(early_january_weather)` rows and `r ncol(early_january_weather)` columns. The mean temperature is approximately `r mean(early_january_weather$temp)` degrees.
+
+A scatterplot was created to display the relationship between temperature and time hour, with humidity levels. As the time increases, the temperature increases, and the humidity level reached maximum around Jan. 14th. Then, the scatterplot was exported to the project directory as "scatterplot.png".
+
+```{r, eval= FALSE, echo=FALSE}
+#Structure of the dataset
+str(early_january_weather)
+library(ggplot2)
+#Make a scatterplot
+scatterplot <- ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) +
+  geom_point() +
+  labs(x = "Time Hour", y = "Temperature", color = "Humidity")
+#Print the scatterplot
+print(scatterplot)
+#ggsave
+ggsave("scatterplot.png", plot = scatterplot, width = 8, height = 6)
+```
+
+# Problem 2
+
+After caculating the mean value of each variable in the dataframe, the ran_size and log_vector have mean values, but the chara_vector and vec_factor have not.
+
+When converting the \`log_vector\` to numeric values, only have 0 (FALSE), 1 (TRUE), and NAs (missing values).
+
+When converting the \`chara_vector\` to numeric values, the results are NAs since the string characters cannot be interpreted as valid numbers.
+
+When converting the \`vec_factor\` to numeric values, the 4 levels have been converted to 1, 2, 3, and 4. This number represents the levels of the factor but meaningless in numeric level.
+
+```{r, eval=FALSE}
+# Create a data frame
+example_df <- tibble(
+  ran_size = rnorm(10),
+  log_vector = rnorm(10) > 0,  
+  chara_vector = c("My", "name", "is", "Tara", "Zhan", "and", "nice", "to", "meet", "you"),
+  vec_factor = factor(c("elder", "elder", "elder", "adult", "adult", "adult", "adult", "children", "children", "children"))
+)
+#The mean of each variable
+mean(pull(example_df, ran_size))
+mean(pull(example_df, log_vector))       
+mean(pull(example_df, chara_vector))  
+mean(pull(example_df, vec_factor))        
+#Convert variables to numeric
+new_log_vector <- as.numeric(example_df$log_vector)
+new_chara_vector <- as.numeric(example_df$chara_vector)
+new_vec_factor <- as.numeric(example_df$vec_factor)
+```
