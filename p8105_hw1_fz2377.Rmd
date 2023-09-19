@@ -20,7 +20,7 @@ library(moderndive)
 data("early_january_weather")
 ```
 
-This "early_january_weather" dataset contains 15 variables: `r colnames(early_january_weather)`.
+This "early_january_weather" dataset contains 15 variables: `r colnames(early_january_weather)`. For variable "temp", the mean value is  `r mean(early_january_weather$temp)`  and the SD is `r sd(early_january_weather$temp)` . For variable "humid", the mean value is `r mean(early_january_weather$humid)` and the SD is `r sd(early_january_weather$humid)` . For variable "wind_speed", the mean value is `r mean(early_january_weather$wind_speed)` and the SD is `r sd(early_january_weather$wind_speed)`. 
 
 This dataset has a total of `r nrow(early_january_weather)` rows and `r ncol(early_january_weather)` columns. The mean temperature is approximately `r mean(early_january_weather$temp)` degrees.
 
