@@ -48,7 +48,7 @@ When converting the \`log_vector\` to numeric values, only have 0 (FALSE), 1 (TR
 
 When converting the \`chara_vector\` to numeric values, the results are NAs since the string characters cannot be interpreted as valid numbers.
 
-When converting the \`vec_factor\` to numeric values, the 4 levels have been converted to 1, 2, 3, and 4. This number represents the levels of the factor but meaningless in numeric level.
+When converting the \`vec_factor\` to numeric values, the 3 levels have been converted to 1, 2, and 3. This number represents the levels of the factor but meaningless in numeric level.
 
 ```{r, eval=FALSE}
 # Create a data frame
